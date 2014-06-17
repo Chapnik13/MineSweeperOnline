@@ -22,17 +22,27 @@ namespace MineSweeperOnline
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            if(config.BOARD_WIDTH * 17 + 100 > config.WIDTH)
-                config.WIDTH = config.BOARD_WIDTH * 17 + 100;
-
-            if(config.BOARD_HEIGHT * 17 + 100 > config.HEIGHT)
-                config.HEIGHT = config.BOARD_HEIGHT * 17 + 100;
-            graphics.PreferredBackBufferWidth = config.WIDTH;
-            graphics.PreferredBackBufferHeight = config.HEIGHT;
         }
 
         protected override void Initialize()
         {
+            if(config.FULLSCREEN == true)
+            {
+                config.WIDTH = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                config.HEIGHT = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+                graphics.IsFullScreen = true;
+            }
+            else
+            {
+                if(config.BOARD * 17 + 100 > config.WIDTH)
+                    config.WIDTH = config.BOARD * 17 + 100;
+
+                if(config.BOARD * 17 + 100 > config.HEIGHT)
+                    config.HEIGHT = config.BOARD * 17 + 100;
+                graphics.PreferredBackBufferWidth = config.WIDTH;
+                graphics.PreferredBackBufferHeight = config.HEIGHT;
+            }
+            graphics.ApplyChanges();
             Screen.init(Content);
             base.Initialize();
         }
@@ -52,7 +62,7 @@ namespace MineSweeperOnline
             if(Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            Screen.currentScreen.Update(gameTime);
+            Screen.currentScreen.Update(gameTime,this);
 
             base.Update(gameTime);
         }

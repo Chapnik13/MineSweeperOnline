@@ -48,8 +48,8 @@ namespace MineSweeperOnline
             open = content.Load<Texture2D>("images/open");
             bomb = content.Load<Texture2D>("images/bomb");
 
-            BlockText = content.Load<SpriteFont>("fonts/BlockText");
-            overFont = content.Load<SpriteFont>("fonts/overText");
+            BlockText = content.Load<SpriteFont>("fonts/blockFont");
+            overFont = content.Load<SpriteFont>("fonts/overFont");
         }
 
         public void Update(GameTime gametime)

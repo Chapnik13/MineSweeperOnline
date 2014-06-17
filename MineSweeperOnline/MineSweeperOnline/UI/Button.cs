@@ -14,7 +14,6 @@ namespace MineSweeperOnline.UI
         public Rectangle rec;
         public string text;
 
-        protected ContentManager content;
         protected SpriteFont font;
 
         protected Texture2D button2D;
@@ -41,9 +40,8 @@ namespace MineSweeperOnline.UI
         {
         }
 
-        public void LoadContent(ContentManager cm)
+        public void LoadContent(ContentManager content)
         {
-            content = new ContentManager(cm.ServiceProvider, cm.RootDirectory);
             font = content.Load<SpriteFont>("fonts/buttonFont");
 
             button2D = content.Load<Texture2D>("images/Button");

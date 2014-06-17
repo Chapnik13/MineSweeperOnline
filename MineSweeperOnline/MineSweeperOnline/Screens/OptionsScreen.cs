@@ -5,21 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MineSweeperOnline.UI;
 
 namespace MineSweeperOnline.Screens
 {
-    class GameNameScreen : Screen
+    class OptionsScreen : Screen
     {
-        SpriteFont font;
-        public GameNameScreen() : base("Game Name")
-        {
-            
-        }
 
-        protected override void setNextScreen()
+        Slider slider;
+
+        public OptionsScreen() : base("Options")
         {
-            time = 3;
-            nextScreen = screens["Main Lobby"];
+            slider = new Slider("Check", 0, 300, new Vector2(300, 300));
         }
 
         public override void Initialize()
@@ -29,18 +26,19 @@ namespace MineSweeperOnline.Screens
 
         public override void LoadContent(ContentManager content)
         {
-            font = content.Load<SpriteFont>("fonts/CreditsFont");
+            slider.LoadContent(content);
             base.LoadContent(content);
         }
 
-        public override void Update(GameTime gameTime,Game game)
+        public override void Update(GameTime gameTime, Game game)
         {
-            base.Update(gameTime, game);
+            slider.Update(gameTime);
+            base.Update(gameTime,game);
         }
 
         public override void Draw(GameTime gameTime,SpriteBatch spritebatch)
         {
-            spritebatch.DrawString(font, "MineSweeper Online", (new Vector2(config.WIDTH, config.HEIGHT) - font.MeasureString("MineSweeper Online")) / 2, Color.Black);
+            slider.Draw(gameTime, spritebatch);
             base.Draw(gameTime,spritebatch);
         }
     }

@@ -15,6 +15,8 @@ namespace MineSweeperOnline.Screens
         private Button startMulti;
         private Button options;
         private Button exit;
+
+        private Game mso;
         public MainLobbyScreen() : base("Main Lobby")
         {
             
@@ -46,13 +48,14 @@ namespace MineSweeperOnline.Screens
             base.LoadContent(content);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, Game game)
         {
+            mso = game;
             startSingle.Update(gameTime);
             startMulti.Update(gameTime);
             options.Update(gameTime);
             exit.Update(gameTime);
-            base.Update(gameTime);
+            base.Update(gameTime,game);
         }
 
         public override void Draw(GameTime gameTime,SpriteBatch spritebatch)
@@ -76,12 +79,11 @@ namespace MineSweeperOnline.Screens
 
         private void onOptionsClick(object sender, EventArgs e)
         {
-            Console.WriteLine("Options");
+            changeScreen(screens["Options"]);
         }
 
         private void onExitClick(object sender, EventArgs e)
         {
-            MineSweeperOnline mso = new MineSweeperOnline();
             mso.Exit();
         }
     }

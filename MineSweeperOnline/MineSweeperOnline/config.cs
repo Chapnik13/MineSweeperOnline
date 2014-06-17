@@ -13,8 +13,12 @@ namespace MineSweeperOnline
         public static int BUTTON_WIDTH = 200;
         public static int BUTTON_HEIGHT = 50;
 
-        public static int BOARD_WIDTH = 10;
-        public static int BOARD_HEIGHT = 10;
+        public static int SLIDER_WIDTH = 200;
+        public static int SLIDER_HEIGHT = 50;
+
+        public static int BOARD = 10;
         public static int BOARD_BOMBS = 10;
+
+        public static bool FULLSCREEN = false;
     }
 }

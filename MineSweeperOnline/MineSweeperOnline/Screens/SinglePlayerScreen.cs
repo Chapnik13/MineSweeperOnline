@@ -18,7 +18,7 @@ namespace MineSweeperOnline.Screens
 
         public override void Initialize()
         {
-            board = new Board(config.BOARD_WIDTH, config.BOARD_HEIGHT, config.BOARD_BOMBS, new Vector2(config.WIDTH / 2 - (17 * config.BOARD_WIDTH) / 2, config.HEIGHT / 2 - (17 * config.BOARD_HEIGHT) / 2));
+            board = new Board(config.BOARD, config.BOARD, config.BOARD_BOMBS, new Vector2(config.WIDTH / 2 - (17 * config.BOARD) / 2, config.HEIGHT / 2 - (17 * config.BOARD) / 2));
             base.Initialize();
         }
 
@@ -28,10 +28,10 @@ namespace MineSweeperOnline.Screens
             base.LoadContent(content);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime,Game game)
         {
             board.Update(gameTime);
-            base.Update(gameTime);
+            base.Update(gameTime,game);
         }
 
         public override void Draw(GameTime gameTime,SpriteBatch spritebatch)
