@@ -85,5 +85,13 @@ namespace MineSweeperOnline.UI
             return (int)((float)(frontSlider.X - backSlider.X) / (backSlider.Width - frontSlider.Width) * (max - min) + min);
         }
 
+        public void setValue(int value)
+        {
+            if(value >= min && value <= max)
+            {
+                frontSlider.X = (int)Math.Ceiling((float)(value - min) / (max - min) * (backSlider.Width - frontSlider.Width) + backSlider.X);
+            }
+        }
+
     }
 }

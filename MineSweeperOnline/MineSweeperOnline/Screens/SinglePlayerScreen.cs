@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace MineSweeperOnline.Screens
 
         public override void Update(GameTime gameTime,Game game)
         {
+            if(Keyboard.GetState().IsKeyDown(Keys.R))
+                changeScreen(this);
             board.Update(gameTime);
             base.Update(gameTime,game);
         }
