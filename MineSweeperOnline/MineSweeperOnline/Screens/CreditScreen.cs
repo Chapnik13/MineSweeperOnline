@@ -33,9 +33,9 @@ namespace MineSweeperOnline.Screens
             base.LoadContent(content);
         }
 
-        public override void Update(GameTime gameTime,Game game)
+        public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime,game);
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime,SpriteBatch spritebatch)

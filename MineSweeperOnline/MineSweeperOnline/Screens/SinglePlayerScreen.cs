@@ -29,12 +29,12 @@ namespace MineSweeperOnline.Screens
             base.LoadContent(content);
         }
 
-        public override void Update(GameTime gameTime,Game game)
+        public override void Update(GameTime gameTime)
         {
             if(Keyboard.GetState().IsKeyDown(Keys.R))
                 changeScreen(this);
             board.Update(gameTime);
-            base.Update(gameTime,game);
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime,SpriteBatch spritebatch)

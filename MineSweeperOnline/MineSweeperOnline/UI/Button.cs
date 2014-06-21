@@ -9,15 +9,11 @@ using System.Text;
 
 namespace MineSweeperOnline.UI
 {
-    class Button
+    class Button : Control
     {
-        public Rectangle rec;
         public string text;
 
         protected SpriteFont font;
-
-        protected Texture2D button2D;
-        protected Texture2D onButton;
 
         private bool on = false;
 
@@ -40,15 +36,14 @@ namespace MineSweeperOnline.UI
         {
         }
 
-        public void LoadContent(ContentManager content)
+        public override void LoadContent(ContentManager content)
         {
             font = content.Load<SpriteFont>("fonts/buttonFont");
 
-            button2D = content.Load<Texture2D>("images/Button");
-            onButton = content.Load<Texture2D>("images/OnButton");
+            texture = content.Load<Texture2D>("images/Button");
         }
 
-        public void Update(GameTime gametime)
+        public override void Update(GameTime gametime)
         {
             if(rec.Contains(Mouse.GetState().X, Mouse.GetState().Y))
             {
@@ -64,12 +59,16 @@ namespace MineSweeperOnline.UI
             lastMouseState = Mouse.GetState();
         }
 
-        public void Draw(GameTime gametime, SpriteBatch spritebatch)
+        public override void Draw(GameTime gametime, SpriteBatch spritebatch)
         {
             if(on == true)
-                spritebatch.Draw(onButton, rec, Color.White);
-            else
-                spritebatch.Draw(button2D, rec, Color.White);
+            {
+                Rectangle border = rec;
+                border.Inflate(2,2);
+                spritebatch.Draw(texture,border, Color.Black);
+                //spritebatch.Draw(onButton, rec, Color.White);
+            }
+            spritebatch.Draw(texture, rec, Color.White);
             spritebatch.DrawString(font, text, new Vector2(rec.X, rec.Y) + (new Vector2(rec.Width,rec.Height) / 2) - font.MeasureString(text) / 2, Color.White);
         }
     }

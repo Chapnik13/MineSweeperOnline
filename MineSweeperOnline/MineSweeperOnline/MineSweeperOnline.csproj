@@ -53,6 +53,8 @@
     <Compile Include="Screens\Screen.cs" />
     <Compile Include="Screens\SinglePlayerScreen.cs" />
     <Compile Include="UI\Button.cs" />
+    <Compile Include="UI\Control.cs" />
+    <Compile Include="UI\Panel.cs" />
     <Compile Include="UI\Slider.cs" />
   </ItemGroup>
   <ItemGroup>

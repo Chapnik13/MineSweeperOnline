@@ -16,9 +16,11 @@ namespace MineSweeperOnline
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        public static MineSweeperOnline instance;
 
         public MineSweeperOnline() : base()
         {
+            instance = this;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -62,7 +64,7 @@ namespace MineSweeperOnline
             if(Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            Screen.currentScreen.Update(gameTime,this);
+            Screen.currentScreen.Update(gameTime);
 
             base.Update(gameTime);
         }

@@ -9,16 +9,14 @@ using System.Text;
 
 namespace MineSweeperOnline.UI
 {
-    class Slider
+    class Slider : Control
     {
-        public Rectangle backSlider;
         public Rectangle frontSlider;
 
         public int max;
         public int min;
         public string text;
 
-        private Texture2D sliderBackTexture;
         private Texture2D sliderFrontTexture;
 
         private SpriteFont font;
@@ -30,7 +28,7 @@ namespace MineSweeperOnline.UI
             this.text = text;
             this.min = min;
             this.max = max;
-            backSlider = new Rectangle((int)start.X, (int)start.Y, width, height);
+            rec = new Rectangle((int)start.X, (int)start.Y, width, height);
             //frontSlider = new Rectangle((int)start.X, (int)start.Y, (int)((float) width / (max - min) * 10), height);
             frontSlider = new Rectangle((int)start.X, (int)start.Y, 20, height);
         }
@@ -43,17 +41,17 @@ namespace MineSweeperOnline.UI
         public Slider(string text, int min, int max, Vector2 start):this(text,min,max,start,config.SLIDER_WIDTH,config.SLIDER_HEIGHT)
         {
         }
-        public void LoadContent(ContentManager content)
+        public override void LoadContent(ContentManager content)
         {
             font = content.Load<SpriteFont>("fonts/buttonFont");
 
-            sliderBackTexture = content.Load<Texture2D>("images/sliderBack");
+            texture = content.Load<Texture2D>("images/sliderBack");
             sliderFrontTexture = content.Load<Texture2D>("images/sliderFront");
         }
 
-        public void Update(GameTime gametime)
+        public override void Update(GameTime gametime)
         {
-            if(backSlider.Contains(Mouse.GetState().X, Mouse.GetState().Y) && Mouse.GetState().LeftButton == ButtonState.Pressed)
+            if(rec.Contains(Mouse.GetState().X, Mouse.GetState().Y) && Mouse.GetState().LeftButton == ButtonState.Pressed)
             {
                 /*if(Mouse.GetState().X - lastMouseState.X > 0)
                 {
@@ -66,30 +64,30 @@ namespace MineSweeperOnline.UI
                         frontSlider.Offset(Mouse.GetState().X - lastMouseState.X, 0);
                 }*/
 
-                if(frontSlider.X + Mouse.GetState().X - lastMouseState.X >= backSlider.X && frontSlider.X + Mouse.GetState().X - lastMouseState.X <= backSlider.X + backSlider.Width - frontSlider.Width)
+                if(frontSlider.X + Mouse.GetState().X - lastMouseState.X >= rec.X && frontSlider.X + Mouse.GetState().X - lastMouseState.X <= rec.X + rec.Width - frontSlider.Width)
                     frontSlider.Offset(Mouse.GetState().X - lastMouseState.X, 0);
             }
 
             lastMouseState = Mouse.GetState();
         }
 
-        public void Draw(GameTime gametime, SpriteBatch spritebatch)
+        public override void Draw(GameTime gametime, SpriteBatch spritebatch)
         {
-            spritebatch.Draw(sliderBackTexture, backSlider, Color.White);
+            spritebatch.Draw(texture, rec, Color.White);
             spritebatch.Draw(sliderFrontTexture, frontSlider, Color.White);
-            spritebatch.DrawString(font, text + ": " + getValue(), new Vector2(backSlider.X, backSlider.Y) + (new Vector2(backSlider.Width, backSlider.Height) / 2) - font.MeasureString(text + ": " + getValue()) / 2, Color.White);
+            spritebatch.DrawString(font, text + ": " + getValue(), new Vector2(rec.X, rec.Y) + (new Vector2(rec.Width, rec.Height) / 2) - font.MeasureString(text + ": " + getValue()) / 2, Color.White);
         }
 
         public int getValue()
         {
-            return (int)((float)(frontSlider.X - backSlider.X) / (backSlider.Width - frontSlider.Width) * (max - min) + min);
+            return (int)((float)(frontSlider.X - rec.X) / (rec.Width - frontSlider.Width) * (max - min) + min);
         }
 
         public void setValue(int value)
         {
             if(value >= min && value <= max)
             {
-                frontSlider.X = (int)Math.Ceiling((float)(value - min) / (max - min) * (backSlider.Width - frontSlider.Width) + backSlider.X);
+                frontSlider.X = (int)Math.Ceiling((float)(value - min) / (max - min) * (rec.Width - frontSlider.Width) + rec.X);
             }
         }
 

@@ -11,11 +11,10 @@ namespace MineSweeperOnline.Screens
 {
     class OptionsScreen : Screen
     {
-
+        Panel exit;
         Slider boardSize, bombs;
         Button accept, close;
         SpriteFont font;
-        int time = 0;
         public OptionsScreen() : base("Options")
         {
         }
@@ -27,11 +26,14 @@ namespace MineSweeperOnline.Screens
             bombs = new Slider("Bombs", 12, 100, new Vector2(400, 50));
             bombs.setValue(config.BOARD_BOMBS);
 
-            accept = new Button("Save & Close", new Vector2(150, 400));
+            accept = new Button("Save & Close", new Vector2(0, 0));
             accept.buttonClicked += accept_buttonClicked;
 
-            close = new Button("Close Without Saving", new Vector2(400, 400));
+            close = new Button("Close Without Saving", new Vector2(250, 0));
             close.buttonClicked += close_buttonClicked;
+
+            exit = new Panel(Vector2.Zero, accept, close);
+            exit.changeRec(new Rectangle(config.WIDTH / 2 - exit.rec.Width / 2, (int)((config.HEIGHT - exit.rec.Height) * ((float)4 / 5)), exit.rec.Width, exit.rec.Height));
             base.Initialize();
         }
 
@@ -55,8 +57,7 @@ namespace MineSweeperOnline.Screens
             boardSize.LoadContent(content);
             bombs.LoadContent(content);
 
-            accept.LoadContent(content);
-            close.LoadContent(content);
+            exit.LoadContent(content);
 
             font = content.Load<SpriteFont>("fonts/buttonFont");
 
@@ -64,15 +65,14 @@ namespace MineSweeperOnline.Screens
             base.LoadContent(content);
         }
 
-        public override void Update(GameTime gameTime, Game game)
+        public override void Update(GameTime gameTime)
         {
             boardSize.Update(gameTime);
             bombs.Update(gameTime);
-            accept.Update(gameTime);
-            close.Update(gameTime);
+            exit.Update(gameTime);
 
             bombs.min = boardSize.getValue();
-            base.Update(gameTime,game);
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime,SpriteBatch spritebatch)
@@ -86,8 +86,7 @@ namespace MineSweeperOnline.Screens
             bombs.Draw(gameTime, spritebatch);
 
             //buttons
-            accept.Draw(gameTime, spritebatch);
-            close.Draw(gameTime, spritebatch);
+            exit.Draw(gameTime, spritebatch);
 
             base.Draw(gameTime,spritebatch);
         }
