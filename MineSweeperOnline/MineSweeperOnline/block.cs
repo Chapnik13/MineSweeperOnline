@@ -31,7 +31,7 @@ namespace MineSweeperOnline
         {
         }
 
-        public void Draw(GameTime gametime, SpriteBatch spritebatch, Texture2D close, Texture2D open, Texture2D bomb, SpriteFont BlockText)
+        public void Draw(GameTime gametime, SpriteBatch spritebatch, Texture2D close, Texture2D open, Texture2D bomb, SpriteFont BlockText, Color flagColor)
         {
             switch(state)
             {
@@ -41,7 +41,7 @@ namespace MineSweeperOnline
 
                 case status.flag:
                     spritebatch.Draw(close, rec, Color.White);
-                    spritebatch.DrawString(BlockText, "F", new Vector2(rec.X, rec.Y) + (new Vector2(rec.Width, rec.Height) / 2) - BlockText.MeasureString("F") / 2, Color.Red);
+                    spritebatch.DrawString(BlockText, "F", new Vector2(rec.X, rec.Y) + (new Vector2(rec.Width, rec.Height) / 2) - BlockText.MeasureString("F") / 2, flagColor);
                     break;
 
                 case status.open:

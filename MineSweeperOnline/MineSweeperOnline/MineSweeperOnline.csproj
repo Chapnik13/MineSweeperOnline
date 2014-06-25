@@ -39,6 +39,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="MineSweeperOnline.cs" />
+    <Compile Include="MultiPlayerBoard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -49,6 +50,8 @@
     <Compile Include="Screens\CreditScreen.cs" />
     <Compile Include="Screens\GameNameScreen.cs" />
     <Compile Include="Screens\MainLobbyScreen.cs" />
+    <Compile Include="Screens\MultiPlayerScreen.cs" />
+    <Compile Include="Screens\MultiPlayerStartScreen.cs" />
     <Compile Include="Screens\OptionsScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
     <Compile Include="Screens\SinglePlayerScreen.cs" />
@@ -87,6 +90,10 @@
     <ProjectReference Include="..\MineSweeperOnlineContent\MineSweeperOnlineContent\MineSweeperOnlineContentManager.csproj">
       <Project>{822d2c71-6837-4cda-b6f6-14f336d83817}</Project>
       <Name>MineSweeperOnlineContentManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSOServer\MSOServer.csproj">
+      <Project>{38aedf02-a16e-47dd-b757-94da49a65fbe}</Project>
+      <Name>MSOServer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

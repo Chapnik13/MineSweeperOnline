@@ -85,11 +85,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="images\OnButton.png">
-      <Name>OnButton</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="images\open.png">
       <Name>open</Name>
       <Importer>TextureImporter</Importer>

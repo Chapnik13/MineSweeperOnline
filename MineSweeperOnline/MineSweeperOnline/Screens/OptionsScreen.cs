@@ -33,7 +33,7 @@ namespace MineSweeperOnline.Screens
             close.buttonClicked += close_buttonClicked;
 
             exit = new Panel(Vector2.Zero, accept, close);
-            exit.changeRec(new Rectangle(config.WIDTH / 2 - exit.rec.Width / 2, (int)((config.HEIGHT - exit.rec.Height) * ((float)4 / 5)), exit.rec.Width, exit.rec.Height));
+            exit.setVec(new Vector2(config.WIDTH / 2 - exit.rec.Width / 2, (int)((config.HEIGHT - exit.rec.Height) * ((float)4 / 5))));
             base.Initialize();
         }
 

@@ -56,6 +56,9 @@ namespace MineSweeperOnline.UI
             else
                 on = false;
 
+            if(rec.Width < font.MeasureString(text).X)
+                rec.Width = (int)font.MeasureString(text).X;
+
             lastMouseState = Mouse.GetState();
         }
 

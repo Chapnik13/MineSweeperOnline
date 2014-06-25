@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MineSweeperOnline.UI;
+using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace MineSweeperOnline.Screens
 {
@@ -72,7 +74,23 @@ namespace MineSweeperOnline.Screens
 
         private void onStartMultiClick(object senrder, EventArgs e)
         {
-            Console.WriteLine("Start Multi");
+            /*MSOServer.Server server = new MSOServer.Server();
+            Process.Start(server.getPath());
+            System.Threading.Thread.Sleep(1000);
+            string IP = "192.168.1.12";
+            int port = 5353;
+            TcpClient client;
+            NetworkStream ns;
+
+            client = new TcpClient();
+            client.Connect(IP, port);
+            //while(true)
+            {
+                ns = client.GetStream();
+                string bufferToSend = "CHECK";
+                ns.Write(Encoding.ASCII.GetBytes(bufferToSend), 0, Encoding.ASCII.GetBytes(bufferToSend).Length);
+            }*/
+            changeScreen(screens["MultiPlayerStart"]);
         }
 
         private void onOptionsClick(object sender, EventArgs e)

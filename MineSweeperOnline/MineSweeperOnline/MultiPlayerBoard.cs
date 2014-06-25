@@ -9,7 +9,7 @@ using System.Text;
 
 namespace MineSweeperOnline
 {
-    class Board
+    class MultiPlayerBoard
     {
         public int bombs;
         public Block[,] board;
@@ -27,7 +27,7 @@ namespace MineSweeperOnline
         public event EventHandler<BlockEventArgs> MineClicked;
         public event EventHandler<BlockEventArgs> blockClicked;
 
-        public Board(int width, int height,int bombs, Vector2 start)
+        public MultiPlayerBoard(int width, int height,int bombs, Vector2 start)
         {
             /*ended = false;
             time = 0;*/
@@ -45,7 +45,7 @@ namespace MineSweeperOnline
             createBoard();
         }
 
-        public Board(int[,] a,Vector2 start)
+        public MultiPlayerBoard(int[,] a, Vector2 start)
         {
             bombs = 0;
             this.start = start;
@@ -293,16 +293,6 @@ namespace MineSweeperOnline
                     }
                 }
             }
-        }
-    }
-
-    public class BlockEventArgs : EventArgs
-    {
-        public int i, j;
-        public BlockEventArgs(int i, int j)
-        {
-            this.i = i;
-            this.j = j;
         }
     }
 }

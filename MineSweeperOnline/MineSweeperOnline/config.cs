@@ -22,11 +22,16 @@ namespace MineSweeperOnline
 
         public static bool FULLSCREEN = false;
 
+        public static string IP = sett.IP;
+
+        public static bool host = false;
+
         public static void refresh()
         {
             Properties.Settings sett = new Properties.Settings();
             BOARD = sett.Size;
             BOARD_BOMBS = sett.Bombs;
+            IP = sett.IP;
         }
     }
 }

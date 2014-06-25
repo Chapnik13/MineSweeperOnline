@@ -64,14 +64,15 @@ namespace MineSweeperOnline.UI
             }
         }
 
-        public void changeRec(Rectangle rect)
+        public void setVec(Vector2 vec)
         {
             foreach(Control control in controls)
             {
                 control.rec.X -= rec.X;
                 control.rec.Y -= rec.Y;
             }
-            rec = rect;
+            rec.X = (int)vec.X;
+            rec.Y = (int)vec.Y;
             foreach(Control control in controls)
             {
                 control.rec.X += rec.X;
